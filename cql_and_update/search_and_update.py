@@ -6,6 +6,7 @@ import json
 import urllib3
 import datetime
 import re
+import yaml
 
 urllib3.disable_warnings()
 
@@ -126,12 +127,11 @@ def get_content_storage(dictpageid,urlbase,auth):
 
 
 def get_credential():
-   import yaml
-   credentialfilename = r'../credential.yaml'
+   credentialfilename = r"../credential.yaml"
    diccredential = yaml.load(open(credentialfilename))
    urlbase = diccredential['urlbase']
    auth = HTTPBasicAuth(diccredential['username'], diccredential['key'])
-   #credentialfilename.close()
+   #yaml.close(credentialfilename)
    return (urlbase,auth)
 
 def main():
