@@ -19,8 +19,8 @@
     1- yum install git ( and python3, )
     2- cd ~/Documents ( on windows )
     3- git clone https://github.com/dahai0013/confluence.git ( will be automated in terraform in the future )
-    4- mkdir confluence/cql_and_update/change_log     ( will be automatic in the future )
-    5- vi confluence/cql_and_update/credential.yaml ( an copy the credential )
+    4- mv confluence/credential.yaml.template confluence/credential.yaml
+    5- vi confluence/credential.yaml ( an copy your credential to this file )
 
 
 
@@ -30,7 +30,7 @@
     2-
     3-
 
-
+    
             start
             stage1
             stage2

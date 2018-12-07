@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 # This code sample uses the 'requests' library:
 # http://docs.python-requests.org
 import requests
@@ -93,6 +95,8 @@ def get_content_storage(dictpageid,urlbase,auth):
    dict['title'] = dicdata['title']
    dict['type'] = "page"
    dict['body']['storage']['value'] = updated_string
+   # need to add this one
+   # storage: [ value: writer.toString(), representation: "storage" ]
    print("dict:\n",json.dumps(dict))
 
    # save into a file the future changes
@@ -149,17 +153,17 @@ def main():
 
    # get a list of all the page id matching the search
    listpageid = get_content_search (urlbase,search_string,auth)
-   print("stage1")
+   print("stage1: get a list of all the page id matching the search")
    # get version from page content
    ##test single page:   for x in range(2,len(listpageid)):
    listpageversion.append(get_content_version(listpageid[2],urlbase,auth))
-   print("stage2")
+   print("stage2: get version from page content")
 
    # modify the string and update the page
    ##test single page:   for x in range(2,len(listpageversion)):
    new_string = get_content_storage(listpageversion[0],urlbase,auth)
    print ("After: ",new_string)
-   print("stage3")
+   print("stage3: modify the string and update the page")
    #
 
 
