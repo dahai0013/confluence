@@ -72,12 +72,22 @@ def get_content_version(listpageid,urlbase,auth):
 def get_content_storage(dictpageid,urlbase,auth):
    dict = {}
 
-   # call Confluence API
+   # call Confluence API to get space key
+   dict['space'] = {}
+   url = urlbase + "/content/" + str(dictpageid['id'])
+   dicdata = call_api(url, auth)
+   #print ("dicdata for the space key:",dicdata)
+   dict['space']['key'] = dicdata['space']['key']
+   #print("space key:",dict['space']['key'])
+
+
+   # call Confluence API to get content storage
    url = urlbase+"/content/"+str(dictpageid['id'])+"/?expand=body.storage"
    dicdata = call_api(url, auth)
-
+   print ("dicdata:",dicdata)
+   #extract storage value ( webpage )
    strresult = dicdata['body']['storage']['value']
-   print("Before: ",strresult)
+   print("Storage vlaue Before: ",strresult)
    # Substitution Option1:
    # Original:   "<p><a href=\"http://freetelecomuni.co.uk\"><ac:image><ri:url ri:value=\"http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg\" />"
    # target:    "<p><ac:image><ri:attachment ri:filename=\"headerFTU.jpg\" ri:version-at-save=\"2\">"
@@ -85,20 +95,22 @@ def get_content_storage(dictpageid,urlbase,auth):
    new_string = r'<p><ac:image><ri:attachment ri:filename="headerFTU.jpg" ri:version-at-save="2">"'
    reg_string = r'\A^.*jpg\"\s\/>'
    updated_string = re.sub(reg_string,new_string,strresult)
-   print ("After:", updated_string)
+   print ("After:", updated_string,"\n")
 
    dict['version'] = {}
    dict['title'] = {}
    dict['type'] = {}
    dict['body'] = {}
+
    dict['body']['storage'] = {}
    dict['version']['number'] = dictpageid['version']+1
    dict['title'] = dicdata['title']
    dict['type'] = "page"
    dict['body']['storage']['value'] = updated_string
+
    # need to add this one
    # storage: [ value: writer.toString(), representation: "storage" ]
-   print("dict:\n",json.dumps(dict))
+   print("dict:\n",json.dumps(dict),"\n")
 
    # save into a file the future changes
    now = datetime.datetime.now()
@@ -109,7 +121,7 @@ def get_content_storage(dictpageid,urlbase,auth):
 
    # PUT /rest/api/content/
    url = urlbase+"/content/"+dicdata['id']
-   print("url;",url)
+   print("url of the page:",url,"\n")
 
    headers = {
       "Accept": "application/json",
