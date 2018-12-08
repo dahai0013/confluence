@@ -85,6 +85,7 @@ def get_content_storage(dictpageid,urlbase,auth):
    new_string = r'<p><ac:image><ri:attachment ri:filename="headerFTU.jpg" ri:version-at-save="2">"'
    reg_string = r'\A^.*jpg\"\s\/>'
    updated_string = re.sub(reg_string,new_string,strresult)
+   print ("After:", updated_string)
 
    dict['version'] = {}
    dict['title'] = {}
@@ -108,6 +109,7 @@ def get_content_storage(dictpageid,urlbase,auth):
 
    # PUT /rest/api/content/
    url = urlbase+"/content/"+dicdata['id']
+   print("url;",url)
 
    headers = {
       "Accept": "application/json",
@@ -120,8 +122,8 @@ def get_content_storage(dictpageid,urlbase,auth):
       "PUT",
       url,
       data=payload,
-      headers=headers,
-      auth=auth
+      auth=auth,
+      headers=headers
    )
 
    print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
