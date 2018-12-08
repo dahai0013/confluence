@@ -107,7 +107,7 @@ def get_content_storage(dictpageid,urlbase,auth):
    dict['title'] = dicdata['title']
    dict['type'] = "page"
    dict['body']['storage']['value'] = updated_string
-
+   dict['body']['storage']['representation']= "storage"
    # need to add this one
    # storage: [ value: writer.toString(), representation: "storage" ]
    print("dict:\n",json.dumps(dict),"\n")
@@ -121,7 +121,7 @@ def get_content_storage(dictpageid,urlbase,auth):
 
    # PUT /rest/api/content/
    url = urlbase+"/content/"+dicdata['id']
-   print("url of the page:",url,"\n")
+   print("url of the page:\n",url,"\n")
 
    headers = {
       "Accept": "application/json",
@@ -176,7 +176,7 @@ def main():
    # modify the string and update the page
    ##test single page:   for x in range(2,len(listpageversion)):
    new_string = get_content_storage(listpageversion[0],urlbase,auth)
-   print ("After: ",new_string)
+   print ("After: \n",new_string)
    print("stage3: modify the string and update the page")
    #
 
