@@ -80,20 +80,20 @@ def get_content_storage(dictpageid,urlbase,auth):
    dict['space']['key'] = dicdata['space']['key']
    #print("space key:",dict['space']['key'])
 
-
+   dicdata = {}
    # call Confluence API to get content storage
    url = urlbase+"/content/"+str(dictpageid['id'])+"/?expand=body.storage"
    dicdata = call_api(url, auth)
    print ("dicdata:",dicdata)
    #extract storage value ( webpage )
    strresult = dicdata['body']['storage']['value']
-   print("Storage vlaue Before: ",strresult)
+   print("Storage value Before: ",strresult)
    # Substitution Option1:
    # Original:   "<p><a href=\"http://freetelecomuni.co.uk\"><ac:image><ri:url ri:value=\"http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg\" />"
    # target:    "<p><ac:image><ri:attachment ri:filename=\"headerFTU.jpg\" ri:version-at-save=\"2\">"
 
-   new_string = r'<p><ac:image><ri:attachment ri:filename="headerFTU.jpg" ri:version-at-save="2">"'
-   reg_string = r'\A^.*jpg\"\s\/>'
+   new_string = r'<p><ac:image><ri:attachment ri:filename="headerFTU.jpg" ri:version-at-save="2"></ac:image></p>'
+   reg_string = r'\A^.*jpg\"\s\/></ac:image></a></p>'
    updated_string = re.sub(reg_string,new_string,strresult)
    print ("After:", updated_string,"\n")
 
