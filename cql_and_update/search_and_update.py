@@ -92,7 +92,7 @@ def get_content_storage(dictpageid,urlbase,auth):
    # Original:   "<p><a href=\"http://freetelecomuni.co.uk\"><ac:image><ri:url ri:value=\"http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg\" />"
    # target:    "<p><ac:image><ri:attachment ri:filename=\"headerFTU.jpg\" ri:version-at-save=\"2\">"
 
-   new_string = r'<p><ac:image><ri:attachment ri:filename="headerFTU.jpg" ri:version-at-save="2"></ac:image></p>'
+   new_string = r'<p><ac:image><ri:attachment ri:filename="headerFTU.jpg" ri:version-at-save="2"></ri:attachment></ac:image></p>'
    reg_string = r'\A^.*jpg\"\s\/></ac:image></a></p>'
    updated_string = re.sub(reg_string,new_string,strresult)
    print ("After:", updated_string,"\n")
