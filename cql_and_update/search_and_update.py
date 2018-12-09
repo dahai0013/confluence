@@ -99,9 +99,15 @@ def get_content_storage(dictpageid,urlbase,auth):
 
    new_string = r'<p><ac:image><ri:attachment ri:filename="headerFTU.jpg" ri:version-at-save="2"><ri:page ri:content-title="'+space_title+r'" ri:version-at-save="1" /></ri:attachment></ac:image></p>'
    #print("new_string:\nS",new_string,"\n")
-   reg_string = r'\A^.*jpg\"\s\/></ac:image></a></p>'
-   updated_string = re.sub(reg_string,new_string,strresult)
-   #print ("After:", updated_string,"\n")
+
+   # match 1
+   reg_string1 = r'\A^.*jpg\"\s\/></ac:image></a></p>'
+   # match 2
+   reg_string2 = r'\A^.*g\"\s/></ac:image></p>'
+   updated_string = re.sub(reg_string1,new_string,strresult)
+   print("match1:\n",updated_string)
+   updated_string = re.sub(reg_string2,new_string,strresult)
+   print ("match2:\n", updated_string,"\n")
 
    dict['version'] = {}
    dict['title'] = {}
@@ -192,7 +198,7 @@ def main():
    # modify the string and update the page
    ##test single page:
    for x in range(2,len(listpageversion)):
-      print ("page :",listpageversion[x])
+      #print ("page :",listpageversion[x])
       new_string = get_content_storage(listpageversion[x],urlbase,auth)
       #print ("After: \n",new_string)
       #print("stage3: modify the string and update the page")
