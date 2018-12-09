@@ -105,7 +105,8 @@ def get_content_storage(dictpageid,urlbase,auth):
    # match 2
    reg_string2 = r'\A^.*g\"\s/></ac:image></p>'
    # match 3
-   reg_string3 = r'\A^.*pg\\\"\s/></ac:image></code></p>'
+   #reg_string3 = r'\A^.*pg\\\"\s/></ac:image></code></p>'
+   reg_string3 = r'\A^<p>.*\s/></ac:image></code></p>'
    updated_string = re.sub(reg_string1,new_string,strresult)
    #print(strresult)
    #print("after match1:\n",updated_string)
