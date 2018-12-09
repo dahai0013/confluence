@@ -135,15 +135,15 @@ def get_content_storage(dictpageid,urlbase,auth):
 
    payload = json.dumps(dict)
 
-   # response = requests.request(
-   #    "PUT",
-   #    url,
-   #    data=payload,
-   #    auth=auth,
-   #    headers=headers
-   # )
-   #
-   # print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
+   response = requests.request(
+      "PUT",
+      url,
+      data=payload,
+      auth=auth,
+      headers=headers
+   )
+
+   #print(json.dumps(json.loads(response.text), sort_keys=True, indent=4, separators=(",", ": ")))
 
    # print (dict)
    return(dict)
