@@ -105,9 +105,11 @@ def get_content_storage(dictpageid,urlbase,auth):
    # match 2
    reg_string2 = r'\A^.*g\"\s/></ac:image></p>'
    updated_string = re.sub(reg_string1,new_string,strresult)
-   #print("match1:\n",updated_string)
-   updated_string = re.sub(reg_string2,new_string,strresult)
-   #print ("match2:\n", updated_string,"\n")
+   #print(strresult)
+   #print("after match1:\n",updated_string)
+   if updated_string==strresult:
+      updated_string = re.sub(reg_string2,new_string,strresult)
+      #print ("match2:\n", updated_string,"\n")
 
    dict['version'] = {}
    dict['title'] = {}
