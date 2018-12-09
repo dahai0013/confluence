@@ -105,9 +105,9 @@ def get_content_storage(dictpageid,urlbase,auth):
    # match 2
    reg_string2 = r'\A^.*g\"\s/></ac:image></p>'
    updated_string = re.sub(reg_string1,new_string,strresult)
-   print("match1:\n",updated_string)
+   #print("match1:\n",updated_string)
    updated_string = re.sub(reg_string2,new_string,strresult)
-   print ("match2:\n", updated_string,"\n")
+   #print ("match2:\n", updated_string,"\n")
 
    dict['version'] = {}
    dict['title'] = {}
@@ -193,12 +193,13 @@ def main():
    ##test single page:
    for x in range(2,len(listpageid)):
       listpageversion.append(get_content_version(listpageid[x],urlbase,auth))
-   print("stage2: get version from page content",listpageversion)
+   #print("stage2: get version from page content",listpageversion)
+   print("stage2: get version from page content")
 
    # modify the string and update the page
    ##test single page:
    for x in range(2,len(listpageversion)):
-      #print ("page :",listpageversion[x])
+      print ("page :",listpageversion[x])
       new_string = get_content_storage(listpageversion[x],urlbase,auth)
       #print ("After: \n",new_string)
       #print("stage3: modify the string and update the page")
