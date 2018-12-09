@@ -16,7 +16,8 @@ urllib3.disable_warnings()
 #space_url = urlbase+"/space"
 #auth = HTTPBasicAuth("dahai0013@googlemail.com", "L6FNjAfG77iYnXRNZxUv50F3")
 spacelist = ['JA', 'JO', 'JIO', 'JUN', 'JS', 'JS2', 'LIN', 'NS7', 'NN', 'RP']
-search_string = r'?cql=(text ~ "http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg")'
+#search_string = r'?cql=(text ~ "http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg")'
+search_string = r'http://www.freetelecomuni.co.uk/O0O000OOO00O/latest_SDN_HTML/lib/header1.jpg'
 
 #future ::    def call_api(method,url,auth,payload)
 def call_api (url,auth):
@@ -111,7 +112,7 @@ def get_content_storage(dictpageid,urlbase,auth):
    reg_string3 = r'\A^<p>.*\s/></ac:image></code></p>'
    updated_string = re.sub(reg_string1,new_string,strresult)
    #print(strresult)
-   #print("after match1:\n",updated_string)
+   print("match1:\n",updated_string)
    if updated_string==strresult:
       updated_string = re.sub(reg_string2,new_string,strresult)
       print ("match2:\n", updated_string,"\n")
