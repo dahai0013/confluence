@@ -18,6 +18,7 @@ urllib3.disable_warnings()
 spacelist = ['JA', 'JO', 'JIO', 'JUN', 'JS', 'JS2', 'LIN', 'NS7', 'NN', 'RP']
 search_string = r'?cql=(text ~ "http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg")'
 
+#future ::    def call_api(method,url,auth,payload)
 def call_api (url,auth):
    """
    call API for this url
@@ -101,7 +102,8 @@ def get_content_storage(dictpageid,urlbase,auth):
    #print("new_string:\nS",new_string,"\n")
 
    # match 1
-   reg_string1 = r'\A^.*jpg\"\s\/></ac:image></a></p>'
+   #reg_string1 = r'\A^.*jpg\"\s\/></ac:image></a></p>'
+   reg_string1 = r'\A^<p>.*\s/></ac:image></a></p>'
    # match 2
    reg_string2 = r'\A^.*g\"\s/></ac:image></p>'
    # match 3
