@@ -104,12 +104,17 @@ def get_content_storage(dictpageid,urlbase,auth):
    reg_string1 = r'\A^.*jpg\"\s\/></ac:image></a></p>'
    # match 2
    reg_string2 = r'\A^.*g\"\s/></ac:image></p>'
+   # match 3
+   reg_string3 = r'\A^.*pg\\\"\s/></ac:image></code></p>'
    updated_string = re.sub(reg_string1,new_string,strresult)
    #print(strresult)
    #print("after match1:\n",updated_string)
    if updated_string==strresult:
       updated_string = re.sub(reg_string2,new_string,strresult)
-      #print ("match2:\n", updated_string,"\n")
+      print ("match2:\n", updated_string,"\n")
+      if updated_string == strresult:
+         updated_string = re.sub(reg_string3, new_string, strresult)
+         print("match3:\n", updated_string, "\n")
 
    dict['version'] = {}
    dict['title'] = {}
