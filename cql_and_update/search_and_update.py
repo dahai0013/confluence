@@ -17,7 +17,7 @@ urllib3.disable_warnings()
 #auth = HTTPBasicAuth("dahai0013@googlemail.com", "L6FNjAfG77iYnXRNZxUv50F3")
 spacelist = ['JA', 'JO', 'JIO', 'JUN', 'JS', 'JS2', 'LIN', 'NS7', 'NN', 'RP']
 #search_string = r'?cql=(text ~ "http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg")'
-search_string = r'http://www.freetelecomuni.co.uk/O0O000OOO00O/latest_SDN_HTML/lib/header1.jpg'
+search_string = r'?cql=(text ~ "http://www.freetelecomuni.co.uk/O0O000OOO00O/latest_SDN_HTML/lib/header1.jpg")'
 
 #future ::    def call_api(method,url,auth,payload)
 def call_api (url,auth):
