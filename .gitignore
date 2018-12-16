@@ -3,3 +3,11 @@
 credential.yaml
 *.log
 *.ini
+*.xml
+upload_2_confluence/.idea/upload_2_confluence.iml
+*.rst
+upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/INSTALLER
+upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/metadata.json
+upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/WHEEL
+upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/RECORD
+upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/METADATA
