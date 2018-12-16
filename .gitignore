@@ -2,3 +2,4 @@
 *.txt
 credential.yaml
 *.log
+*.ini

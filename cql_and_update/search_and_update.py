@@ -28,13 +28,14 @@ def call_api (url,auth):
    :return:
    """
    headers = {
-      "Accept": "application/json"
+      "Accept": "application/json",
+      "Autorization": "Basic ZGFoYWkwMDEzQGdvb2dsZW1haWwuY29tOkw2Rk5qQWZHNzdpWW5YUk5aeFV2NTBGMw=="
    }
    response = requests.request(
       "GET",
       url,
       headers=headers,
-      auth=auth,
+      #auth=auth,
       verify=False
    )
    return (json.loads(response.text))
