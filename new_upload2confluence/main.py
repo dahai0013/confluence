@@ -24,13 +24,10 @@ def main():
     # Create API object.
     api = ConfluenceAPI(username,key, 'https://thefreetelecomuni.atlassian.net/wiki')
 
-    # Get latest visible content from confluence instance.
-    #confluence_recent_data = api.get_content()
-    #print(confluence_recent_data)
-
     # print space content
-    print(api.get_space_content('TEST'))
-    print("\n\n:",api.get_space_information('TEST'))
+    dspace_content = api.get_space_content('TEST')
+    print(type(dspace_content))
+    #print("\n\n:",dspace_content.['id'])
 
 
 if __name__ == "__main__":
