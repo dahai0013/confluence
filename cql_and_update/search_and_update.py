@@ -28,14 +28,13 @@ def call_api (url,auth):
    :return:
    """
    headers = {
-      "Accept": "application/json",
-      "Autorization": "Basic ZGFoYWkwMDEzQGdvb2dsZW1haWwuY29tOkw2Rk5qQWZHNzdpWW5YUk5aeFV2NTBGMw=="
+      "Accept": "application/json"
    }
    response = requests.request(
       "GET",
       url,
       headers=headers,
-      #auth=auth,
+      auth=auth,
       verify=False
    )
    return (json.loads(response.text))
@@ -191,9 +190,8 @@ def main():
    print("start")
 
    # get credential
-   returntuple = get_credential()
-   urlbase = returntuple[0]
-   auth = returntuple[1]
+   urlbase , auth = get_credential()
+
    # stop here
 
    # get a list of all the page id matching the search

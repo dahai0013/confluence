@@ -1,6 +1,6 @@
 # Load API wrapper from library
 from PythonConfluenceAPI import ConfluenceAPI
-import yaml
+import yaml,json
 from requests.auth import HTTPBasicAuth
 import urllib3
 urllib3.disable_warnings()
@@ -23,7 +23,8 @@ def get_credential():
     return (auth,diccredential['username'], diccredential['key'])
 
 
-def create_storage_value(space_key,parent_id,baseurl,title,soup):
+def create_storage_value(space_key,baseurl,title,soup):
+#def create_storage_value(space_key,parent_id,baseurl,title,soup):
 
     # POST /rest/api/content/
     url = baseurl+"content/"
@@ -44,38 +45,47 @@ def create_storage_value(space_key,parent_id,baseurl,title,soup):
     # for PUT
     #dpayload['version']['number'] = 1
     dpayload['space']['key'] = space_key
-    dpayload['body']['storage']['value'] = str(soup.html)
-    print("str(soup.html):",str(soup.html))
+    dpayload['body']['storage']['value'] = str(soup)
+    #print("str(soup):",str(soup))
     dpayload['body']['storage']['representation'] = "storage"
     #print("dpayload :\n",dpayload['body']['storage']['value'].replace(r'ï»¿<html','<hmtl'))
-    print("dpayload :\n",dpayload)
+    #print("dpayload :\n",dpayload)
 
+    #print(type(dpayload))
+    #response = (url,dpayload)
+    # print(response)
+    return (dpayload)
 
-    response = (url,dpayload)
-    #print(response)
 
 def main():
     baseurl = r'https://thefreetelecomuni.atlassian.net/wiki'
-
+    dpage_content = {}
+    print("Start:")
     # get username and password
     auth,username,key = get_credential()
 
     # Create API object.
+    print("Create API objects")
     api = ConfluenceAPI(username,key, 'https://thefreetelecomuni.atlassian.net/wiki')
 
     # print space_id
+    print("get space infor")
     dspace = api.get_space_information('TEST')
-    space_key = int(dspace['key'])
-    parent_id = api.get_space_information()
-    print("\nspace_key:",space_key,"\nspace_id ;",parent_id)
-    title = "page title"
-    soup = "<html><body>HEllo world</body></html>"
+    space_key = dspace['key']
+    space_id = dspace['id']
+    #parent_id = api.get_space_information(space_key)
+    #print("\nspace_key:",space_key,"\nspace_id ;",space_id)
+    title = "page title 5"
+    soup = "<html><body>HEllo world 5</body></html>"
 
 
     # copy webpage to confluence
-    dpage_content = create_storage_value(space_key,parent_id,baseurl,title,soup)
-    api.create_new_content(dpage_content)
-
+    print ("Create the page content")
+    #dpage_content = create_storage_value(space_key,parent_id,baseurl,title,soup)
+    dpage_content = create_storage_value(space_key,baseurl,title,soup)
+    print("create the page")
+    decho_page = api.create_new_content(dpage_content)
+    print("ID of the page created :",decho_page['id'])
 
 if __name__ == "__main__":
     # 1: will strip the first argument, the script.py itself
