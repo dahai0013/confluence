@@ -22,6 +22,9 @@ def get_credential():
     auth = HTTPBasicAuth(diccredential['username'], diccredential['key'])
     return (auth,diccredential['username'], diccredential['key'])
 
+def delete_my_page(page_id):
+    # api.delete_content_by_id(page_id)
+    print ("Hello")
 
 def create_storage_value(space_key,baseurl,title,soup):
 #def create_storage_value(space_key,parent_id,baseurl,title,soup):
@@ -84,8 +87,15 @@ def main():
     #dpage_content = create_storage_value(space_key,parent_id,baseurl,title,soup)
     dpage_content = create_storage_value(space_key,baseurl,title,soup)
     print("create the page")
-    decho_page = api.create_new_content(dpage_content)
-    print("ID of the page created :",decho_page['id'])
+    #decho_page = api.create_new_content(dpage_content)
+    #print("ID of the page created :",decho_page['id'])
+
+    # delete page
+    #print ( "delete page")
+    #print(api.delete_content_by_id(16023578))
+
+    # list all pages
+    print(api.get_space_information('TEST'))
 
 if __name__ == "__main__":
     # 1: will strip the first argument, the script.py itself
