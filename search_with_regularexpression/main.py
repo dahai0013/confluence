@@ -16,6 +16,7 @@ urllib3.disable_warnings()
 def main():
    listpageid = []
    listpageversion = []
+   lpageidmatchregexp = []
    dictpageid = {}
    urlbase = "https://thefreetelecomuni.atlassian.net/wiki/rest/api"
    space = "JS2"
@@ -28,7 +29,7 @@ def main():
    auth, username , key , urlbase = jlk.get_credential()
 
    # get a list of all the page id matching the search
-   lpageid, response_code = jlk.get_list_id_page(space)
+   lpageid, response_code = jlk.get_list_id_page(urlbase,auth,space)
    print(lpageid)
    print(response_code)
    #listpageid = jlk.get_content_search (urlbase,search_string,auth)
@@ -36,13 +37,13 @@ def main():
    #listpageid = ['852057','852057','852057']
    #print("stage1: get a list of all the page id matching the search")
 
-   # # get version from page content
-   # ##test single page:
-   # for x in range(2,len(listpageid)):
-   #    listpageversion.append(get_content_version(listpageid[x],urlbase,auth))
-   # #print("stage2: get version from page content",listpageversion)
-   # print("stage2: get version from page content")
-   #
+   # get pageid of page matching 
+   ##test single page:
+   for x in range(0,len(listpageid)):
+      lpageidmatchregexp.append(jlk.get_content_search_regexp(urlbase,auth,listpageid[x],search_string))
+   print("stage2: get version from page content",lpageidmatchregexp)
+
+   #print("stage2: get version from page content." )
    # # modify the string and update the page
    # ##test single page:
    # for x in range(2,len(listpageversion)):
