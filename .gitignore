@@ -11,3 +11,5 @@ upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/metadata
 upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/WHEEL
 upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/RECORD
 upload_2_confluence/venv/Lib/site-packages/certifi-2018.11.29.dist-info/METADATA
+*.png
+measure_time_API_response/api_response_time.db

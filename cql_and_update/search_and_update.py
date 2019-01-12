@@ -14,7 +14,6 @@ urllib3.disable_warnings()
 
 #urlbase = "https://thefreetelecomuni.atlassian.net/wiki/rest/api"
 #space_url = urlbase+"/space"
-#auth = HTTPBasicAuth("dahai0013@googlemail.com", "L6FNjAfG77iYnXRNZxUv50F3")
 spacelist = ['JA', 'JO', 'JIO', 'JUN', 'JS', 'JS2', 'LIN', 'NS7', 'NN', 'RP']
 #search_string = r'?cql=(text ~ "http://www.freetelecomuni.co.uk/juniper/lib/header1.jpg")'
 search_string = r'?cql=(text ~ "http://www.freetelecomuni.co.uk/O0O000OOO00O/latest_SDN_HTML/lib/header1.jpg")'
@@ -39,7 +38,6 @@ def call_api (url,auth):
    )
    return (json.loads(response.text))
 
-
 def get_content_search (urlbase,search_string,auth):
    """
    do a CQL search and return all the pages id( list )
@@ -57,7 +55,6 @@ def get_content_search (urlbase,search_string,auth):
       listpageid.append(dicdata['results'][pagekey]['id'])
    return(listpageid)
 
-
 def get_content_version(listpageid,urlbase,auth):
    dictpageid = {}
    url = urlbase + "/content/" + str(listpageid)
@@ -69,7 +66,6 @@ def get_content_version(listpageid,urlbase,auth):
    dictpageid['version'] = dicdata['version']['number']
    #print ("id:",dictpageid['id']," and  Version number:",dictpageid['version'])
    return(dictpageid)
-
 
 def get_content_storage(dictpageid,urlbase,auth):
    dict = {}
@@ -164,7 +160,6 @@ def get_content_storage(dictpageid,urlbase,auth):
 
    # print (dict)
    return(dict)
-
 
 def log_message(str_to_log):
    # save into a file the future changes
